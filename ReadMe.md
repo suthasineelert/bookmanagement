@@ -1,38 +1,123 @@
-## Task: Create a Library Book Management System
+# Book Management System
 
-### Details:
+## Overview
 
-1. **Create a Spring Boot Project:**
+The Book Management System is a simple application for managing books. It provides RESTful APIs for creating, reading, updating, and deleting books. The application is built with Spring Boot, Spring Data JPA, and H2 database.
 
-- Use Spring Initializr to create a new Spring Boot project.
-- Select dependencies: Spring Web, Spring Data JPA, H2 Database (or MySQL), Spring Boot DevTools.
+## Features
 
-2. **Create an Entity for Book:**
+- Add a new book
+- Retrieve a book by its ID
+- Retrieve all books
+- Update a book
+- Delete a book
 
-   - Create a Book class with the following fields:
-     - id (Long)
-     - title (String)
-     - author (String)
-     - isbn (String)
-     - publishedDate (LocalDate)
+## Technologies Used
 
-3. **Create a Repository:**
+- Java
+- Spring Boot
+- Spring Data JPA
+- H2 Database
+- Maven
+- JUnit 5
+- MockMvc
 
-   - Create an interface BookRepository that extends JpaRepository<Book, Long>.
+## Getting Started
 
-4. **Create a Service Layer:**
+### Prerequisites
 
-   - Create a BookService class with methods for adding, updating, deleting, and finding books.
+- JDK 11 or higher
+- Maven 3.6.3 or higher
 
-5. **Create a Controller:**
+### Clone the Repository
 
-   - Create a BookController class with endpoints for managing books:
-     - GET /books - Retrieve all books.
-     - GET /books/{id} - Retrieve a book by ID.
-     - POST /books - Add a new book.
-     - PUT /books/{id} - Update a book by ID.
-     - DELETE /books/{id} - Delete a book by ID.
+```bash
+git clone https://github.com/yourusername/book-management.git
+cd book-management
+```
 
-6. **Test the System:**
-   - Unit test coverage.
-   - Use Postman or other tools to test the created API.
+### Build the project
+
+```bash
+./mvnw clean install
+```
+
+### Running the Application
+
+```bash
+./mvnw spring-boot:run
+```
+
+The application will start and be accessible at http://localhost:8080.
+
+### Running Tests
+
+Tests divide into 2 categories
+
+- Unit Test
+- Integration Test
+
+To run unit test
+
+```bash
+./mvnw test -P unit-test
+```
+
+To run integration test
+
+```bash
+./mvnw test -P integration-test
+```
+
+To run both test
+
+```bash
+./mvnw test
+```
+
+## Directory Structure
+
+```
+book-management/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com
+│   │   │       └── bookmanagement/bookmanagement
+│   │   │               ├── BookmanagementApplication.java
+│   │   │               ├── configuration
+│   │   │               │   └── JpaConfig.java
+│   │   │               ├── constant
+│   │   │               │   └── BookManagementConstant.java
+│   │   │               ├── controller
+│   │   │               │   └── BookController.java
+│   │   │               ├── exception
+│   │   │               │   └── GlobalExceptionHandler.java
+│   │   │               ├── model
+│   │   │               │   └── Book.java
+│   │   │               ├── repository
+│   │   │               │   └── BookRepository.java
+│   │   │               └── service
+│   │   │                   └── BookService.java
+│   │   └── resources
+│   │       ├── application-integrationtest.properties
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── com
+│               └── bookmanagement
+│                   └── bookmanagement
+│                       ├── controller
+│                       │   └── BookControllerTest.java
+│                       ├── integration
+│                       │   └── BookControllerIntegrationTest.java
+│                       ├── repository
+│                       │   └── BookRepositoryTest.java
+│                       └── service
+│                           └── BookServiceTest.java
+├── .gitignore
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
+```
